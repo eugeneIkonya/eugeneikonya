@@ -4,7 +4,12 @@
 <div class="container w-50 m-auto">
     <h1 class="text-center">Home</h1>
     <p class="lead">
-        You can absolutely do this Eugene
+        {% if current_user.is_authenticated %}
+            Welcome {{ current_user.username}}
+        {% else %}
+            Eugene Say's Hello
+
+        {% endif %}
     </p>
 </div>
 {% endblock %}

@@ -2,3 +2,6 @@ Flask
 Flask-SQLAlchemy
 Flask-Migrate
 Flask-Login
+email_validator
+flask_wtf
+pillow

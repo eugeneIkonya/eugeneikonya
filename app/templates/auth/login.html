@@ -3,5 +3,37 @@
 {% block content %}
 <div class="container w-50 m-auto">
     <h1 class="text-center">Login</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <div class="input-group has-validation">
+                <div class="form-floating">
+                    {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else ""))}}
+                    {{ form.email.label() }}
+                </div>
+                {% if form.email.errors %}
+                <div class="invalid-feedback">
+                    {{ form.email.errors[0] }}
+                </div>
+                {% endif %}          
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="input-group has-validation">
+                <div class="form-floating">
+                    {{form.password( class="form-control " + ("is-invalid" if form.password.errors else ""))}}
+                    {{form.password.label() }}
+                </div>
+                {% if form.password.errors %}
+                <div class="invalid-feedback">
+                    {{ form.password.errors[0] }}
+                </div>                    
+                {% endif %}
+            </div>
+        </div>
+        <div class="mb-3">
+            {{form.submit(class="btn btn-dark")}}
+        </div>
+    </form>
 </div>
 {% endblock %}
