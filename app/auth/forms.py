@@ -8,15 +8,15 @@ from flask_wtf.file import FileField, FileAllowed
 from app import db
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = StringField('Email', validators=[DataRequired(), Email(),Length(5,64)])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
 class SignupForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = StringField('Email', validators=[DataRequired(), Email(),Length(5,64)])
     username = StringField('Username', validators=[DataRequired()])
-    first_name = StringField('First Name', validators=[DataRequired()])
-    last_name = StringField('Last Name', validators=[DataRequired()])
+    first_name = StringField('First Name', validators=[DataRequired(),Length(3,64)])
+    last_name = StringField('Last Name', validators=[DataRequired(),Length(3,64)])
     password = PasswordField('Password', validators=[DataRequired(),EqualTo('password_confirm',message='Passwords must match')])
     password_confirm = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Sign Up')
@@ -33,8 +33,8 @@ class SignupForm(FlaskForm):
 class UpdateUserForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Username', validators=[DataRequired()])
-    first_name = StringField('First Name', validators=[DataRequired()])
-    last_name = StringField('Last Name', validators=[DataRequired()])
+    first_name = StringField('First Name', validators=[DataRequired(),Length(3,64)])
+    last_name = StringField('Last Name', validators=[DataRequired(),Length(3,64)])
     profile_picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg','png'])])
     submit = SubmitField('Update')
 
@@ -42,3 +42,6 @@ class UpdateUserForm(FlaskForm):
         if db.session.query(User).filter_by(email=field.data).first() and field.data != current_user.email:
             raise ValidationError('Your email has been registered already!')
 
+    def validate_username(self, field):
+        if db.session.query(User).filter_by(username=field.data).first() and field.data != current_user.username:
+            raise ValidationError('Your username has been registered already!')

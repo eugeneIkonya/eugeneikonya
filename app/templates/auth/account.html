@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %} Account {% endblock %}
 {% block content %}
-<div class="container w-50 m-auto d-flex justify-items-center flex-column">
-    <h1 class="text-center">Account</h1>
-    <div class="mb-3 h-25">
-        <img src="{{url_for('static', filename='images/profile_pictures/' + current_user.profile_picture)}}"  alt="profile picture" width="200" height="200">
+<div class="container text-center w-75">
+    <h1 class="">Account</h1>
+    <div class="mb-3    align-content-center ">
+        <img src="{{url_for('static', filename='images/profile_pictures/' + current_user.profile_picture)}}" class="mx-auto" alt="profile picture" width="200" height="200">
     </div>
     <form method="post" enctype="multipart/form-data">
         {{form.hidden_tag()}}
@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
           {{form.profile_picture.label()}}
-            {{form.profile_picture(class="form-control form-control-lg")}}
+            {{form.profile_picture(class="form-control form-control-md")}}
         </div>
         <div class="mb-3">
             <div class="input-group has-validation">
