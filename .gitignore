@@ -1,4 +1,4 @@
-app/static/profile_pictures/*
+app/static/profile_pictures/
 app/migrations/
 app/data.sqlite
 app/__pycache__/
