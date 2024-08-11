@@ -29,12 +29,13 @@
                 <div class="form-floating">
                 {{ form.username(class="form-control" + (" is-invalid" if form.username.errors else "")) }}
                 {{ form.username.label() }}
-                </div>
                 {% if form.username.errors %}
                 <div class="invalid-feedback" >
                 {{ form.username.errors[0] }}
                 </div>
                 {% endif %}
+                </div>
+                
             </div>
         </div>
         <div class="mb-3">
@@ -42,19 +43,22 @@
               <div class="form-floating">
                 {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else "")) }}
                 {{ form.email.label() }}
-              </div>
-            
-              {% if form.email.errors %}
+                {% if form.email.errors %}
               <div class="invalid-feedback">
                 {{ form.email.errors[0] }}
               </div>
               {% endif %}
-        
+              </div>
             </div>
           </div>
           <div class="mb-3">
             {{ form.submit(class="btn btn-dark") }}
           </div>
     </form>
+    <hr>
+    <div class="mb-3">
+        <a href="{{url_for('auth.change_password')}}" class="btn btn-outline-dark">Change Password</a>
+    </div>
 </div>
+
 {% endblock %}

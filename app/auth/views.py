@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, url_for,flash,redirect,request
 from flask_login import login_user,login_required,logout_user,current_user
 from app import db
 from app.models import User
-from app.auth.forms import LoginForm, SignupForm, UpdateUserForm
+from app.auth.forms import LoginForm, SignupForm, UpdateUserForm, ChangePasswordForm
 from app.auth.picture_handler import add_profile_pic
 
 auth = Blueprint('auth',__name__)
@@ -81,3 +81,18 @@ def account():
 def logout():
     logout_user()
     return redirect(url_for('core.index'))
+
+@auth.route('/change_password',methods=['GET','POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    print(form.old_password.errors)
+    if form.validate_on_submit():
+        user = current_user
+        user.password = form.new_password.data
+        db.session.commit()
+        flash('Password Updated!')
+        return redirect(url_for('auth.account'))
+      
+
+    return render_template('auth/change_password.html',form=form)

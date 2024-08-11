@@ -12,6 +12,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
+    def validate_email(self, field):
+        if not db.session.query(User).filter_by(email=field.data).first():
+            raise ValidationError('Incorrect Email!')
+
 class SignupForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email(),Length(5,64)])
     username = StringField('Username', validators=[DataRequired()])
@@ -45,3 +49,17 @@ class UpdateUserForm(FlaskForm):
     def validate_username(self, field):
         if db.session.query(User).filter_by(username=field.data).first() and field.data != current_user.username:
             raise ValidationError('Your username has been registered already!')
+
+class ChangePasswordForm(FlaskForm):
+    old_password = PasswordField('Old Password', validators=[DataRequired()])
+    new_password = PasswordField('New Password', validators=[DataRequired(),EqualTo('new_password_confirm',message='Passwords must match')])
+    new_password_confirm = PasswordField('Confirm New Password', validators=[DataRequired()])
+    submit = SubmitField('Update Password')
+    
+    def validate_old_password(self, field):
+        if not current_user.check_password(field.data):
+            raise ValidationError('Your old password is incorrect!')
+        
+    def validate_new_password(self, field):
+        if current_user.check_password(field.data):
+            raise ValidationError('Your new password must be different from your old password!')

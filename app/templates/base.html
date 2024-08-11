@@ -17,8 +17,13 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                   {% if current_user.is_authenticated %}
-                  <li class="nav-item"><a href="{{url_for('auth.account')}}" class="nav-link active text-capitalize">{{ current_user.username }}</a></li>
-                  <li class="nav-item"><a href="{{url_for('auth.logout')}}" class="nav-link active text-capitalize"> Log out</a></li>
+                  <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle active text-capitalize" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ current_user.username }}</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a href="{{url_for('auth.account')}}" class="dropdown-item">Account</a></li>
+                      <li><a href="{{url_for('auth.logout')}}" class="dropdown-item">Log out</a></li>
+                    </ul>
+                  </li>
                   {% else %}
                   <li class="nav-item"><a href="{{url_for('auth.login')}}" class="nav-link active text-capitalize"> log in</a></li>
                   <li class="nav-item"><a href="{{url_for('auth.signup')}}" class="nav-link active text-capitalize"> Sign up</a></li>
