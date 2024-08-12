@@ -6,6 +6,7 @@
     <p class="lead">
         {% if current_user.is_authenticated %}
             Welcome {{ current_user.username}}
+            <a href="{{ url_for('core.send_mail' ) }}" class="btn btn-outline-dark"> Send Email</a>
         {% else %}
             Eugene Say's Hello
 

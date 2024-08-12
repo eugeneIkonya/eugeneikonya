@@ -1,5 +1,6 @@
 app/static/profile_pictures/
 app/migrations/
 app/data.sqlite
-app/__pycache__/
+app/__pycache__/*
 app/auth/__pycache__/
+.venv
