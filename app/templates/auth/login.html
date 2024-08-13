@@ -32,6 +32,9 @@
             </div>
         </div>
         <div class="mb-3">
+            <a href="{{ url_for('auth.forgot_password' ) }}" class="btn btn-link">Forgot Password</a>
+        </div>
+        <div class="mb-3">
             {{form.submit(class="btn btn-dark")}}
         </div>
     </form>
