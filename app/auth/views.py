@@ -1,9 +1,13 @@
-from flask import Blueprint, render_template, url_for,flash,redirect,request
+from datetime import datetime
+from flask import Blueprint,render_template, url_for,flash,redirect,request
 from flask_login import login_user,login_required,logout_user,current_user
-from app import db
+from app import db, app
 from app.models import User
 from app.auth.forms import LoginForm, SignupForm, UpdateUserForm, ChangePasswordForm
 from app.auth.picture_handler import add_profile_pic
+from app.auth.tokens import generate_confirmation_token, confirm_token
+from app.utils.mail import send_email
+from app.utils.decorators import account_verified
 
 auth = Blueprint('auth',__name__)
 
@@ -39,13 +43,65 @@ def signup():
         
         db.session.add(user)
         db.session.commit()
-        flash('Thanks for signing up!')
-        return redirect(url_for('auth.login'))
+
+        token = generate_confirmation_token(user.email)
+        confirm_url = url_for('auth.confirm_email', token=token, _external=True)
+        html = render_template('auth/confirm_email.html', confirm_url=confirm_url)
+        subject = "EugeneIkonya Website - Account Verification"
+        recipients = [user.email]
+        send_email(subject, recipients, html)
+        
+        login_user(user)
+
+        flash('A confirmation Email has been sent via email!')
+        return redirect(url_for('auth.inactive'))
     
     return render_template('auth/signup.html',form=form)
 
+@auth.route('/confirm/<token>')
+@login_required
+def confirm_email(token):
+    if current_user.is_verified:
+        flash('Account already verified!')
+        return redirect(url_for('core.index'))
+    email = confirm_token(token)
+    user = db.session.query(User).filter_by(email=email).first()
+    if user.email == email:
+        user.is_verified = True
+        user.updated_at = datetime.now()
+        db.session.commit()
+        flash('Account verified!')
+    else:
+        flash("The confirmation link is invalid or has expired.")
+    return redirect(url_for('core.index'))
+
+@auth.route('/inactive')
+@login_required
+def inactive():
+    if current_user.is_verified:
+        return redirect(url_for('core.index'))
+    return render_template('auth/inactive.html')
+
+@auth.route('/resend')
+@login_required
+def resend_confirmation():
+    if current_user.is_verified:
+        flash('Account already verified!')
+        return redirect(url_for('core.index'))
+    
+    token = generate_confirmation_token(current_user.email)
+    confirm_url = url_for('auth.confirm_email', token=token, _external=True)
+    html = render_template('auth/confirm_email.html', confirm_url=confirm_url)
+    subject = "EugeneIkonya Website - Account Verification"
+    recipients = [current_user.email]
+    send_email(subject, recipients, html)
+
+
+
+
 @auth.route('/account',methods=['GET','POST'])
 @login_required
+@account_verified
 def account():
     form = UpdateUserForm()
 
@@ -64,6 +120,7 @@ def account():
         current_user.username = form.username.data
         current_user.first_name = form.first_name.data
         current_user.last_name = form.last_name.data
+        current_user.updated_at = datetime.now()
 
         db.session.commit()
         flash('User Account Updated!')
@@ -90,9 +147,11 @@ def change_password():
     if form.validate_on_submit():
         user = current_user
         user.password = form.new_password.data
+        user.updated_at = datetime.now()
         db.session.commit()
         flash('Password Updated!')
         return redirect(url_for('auth.account'))
       
 
     return render_template('auth/change_password.html',form=form)
+

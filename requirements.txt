@@ -6,3 +6,4 @@ email_validator
 flask_wtf
 pillow
 Flask-Mail
+itsdangerous

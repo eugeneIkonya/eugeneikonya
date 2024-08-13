@@ -21,6 +21,9 @@ app.config['MAIL_DEFAULT_SENDER'] = 'eugeneikonyawebsite@gmail.com'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
+app.config['SECURITY_PASSWORD_SALT'] = 'my_precious_two'
+
+
 mail = Mail(app)
 
 
@@ -42,3 +45,6 @@ app.register_blueprint(error_pages)
 
 from app.auth.views import auth
 app.register_blueprint(auth)
+
+
+from app.utils.comands import create_admin
