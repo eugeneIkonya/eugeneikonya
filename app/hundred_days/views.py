@@ -6,13 +6,17 @@ hundred_days = Blueprint('hundred_days',__name__)
 def week_one():
     return render_template('hundred_days/week1.html')
 
-
-@hundred_days.route('/calculate-bill', methods=['POST'])
+@hundred_days.route('/calculate-bill',methods=['POST'])
 def calculate_bill():
     data = request.get_json()
+    
     bill = data['bill']
     tip = data['tip']
     people = data['people']
-    total_per_person = round((bill * (100 + tip) / 100) / people, 2)
-    print(total_per_person)
-    return jsonify({'total': total_per_person})
+
+    total =  round((bill * (100 + tip)/100)/people,2)
+    print
+
+    return jsonify({
+        'amount' : total
+    })
