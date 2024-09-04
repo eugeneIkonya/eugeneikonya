@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    100 Days Of Code
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 d-flex align-items-center">
+            <div class="list-group pt-5" id="myList" role="tablist">
+                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#day1" role="tab">Day 1 : <strong>Tip Calculator</strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day2" role="tab">Day 2</a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day3" role="tab">Day 3</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="day1" role="tabpanel">
+                    <div class="container">
+                        <h1 class="display-5">Day 1</h1>
+                    </div>
+                </div>
+                <div class="tab-pane" id="day2" role="tabpanel">Content for Day 2</div>
+                <div class="tab-pane" id="day3" role="tabpanel">Content for Day 3</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <!-- Additional content can be added here -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+.navbar{
+    z-index: 1000;
+    transition: all 0.5s ease;
+}
+.my-cont {
+    min-height: 100vh; /* Default for larger screens */
+}
+
+@media (max-width: 768px) {
+    .my-cont {
+        min-height: 0 !important; /* Override for small screens */
+    }
+}

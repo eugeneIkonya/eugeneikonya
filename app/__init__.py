@@ -8,20 +8,9 @@ from flask_mail import Mail
 
 app = Flask(__name__)
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'your_secret_key_here'
+from app.config import DevelopmentConfig, ProductionConfig
 
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'eugeneikonyawebsite@gmail.com'
-app.config['MAIL_PASSWORD'] = 'doykbnwmlptidfyn'
-app.config['MAIL_DEFAULT_SENDER'] = 'eugeneikonyawebsite@gmail.com'
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
-
-app.config['SECURITY_PASSWORD_SALT'] = 'my_precious_two'
+app.config.from_object(DevelopmentConfig)
 
 
 mail = Mail(app)
@@ -45,6 +34,9 @@ app.register_blueprint(error_pages)
 
 from app.auth.views import auth
 app.register_blueprint(auth)
+
+from app.hundred_days.views import hundred_days
+app.register_blueprint(hundred_days)
 
 
 from app.utils.comands import create_admin
