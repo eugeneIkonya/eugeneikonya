@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>EugeneIkonya - {% block title %}{% endblock %}</title>
+    <title>by EugeneIkonya - {% block title %}{% endblock %}</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-md sticky-top">
         <div class="container">
-            <a href="{{ url_for('core.index' ) }}" class="navbar-brand">EugeneIkonya</a>
+            <a href="{{ url_for('core.index' ) }}" class="navbar-brand"><span class="fs-6">by </span>Eugene Ikonya</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
               </button>

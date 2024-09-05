@@ -6,18 +6,21 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <h1 class="fw-light">Week 1</h1>
             <div class="list-group pt-2" id="myList" role="tablist">
-                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#day1" role="tab">Day 1 : <strong>Bill Calculator</strong></a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day1-2" role="tab">Day 1: <strong>Band Name Generator</strong></a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day3" role="tab">Day 3</a>
+                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#bill-calculator" role="tab">Day 1 : <strong>Bill Calculator</strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#band-name" role="tab">Day 1: <strong>Band Name Generator</strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#story" role="tab">Day 2: <strong>Choose your Own Story</strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#rock-paper-scissors" role="tab">Day 3: <strong>Rock Paper Scissors</strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#password-generator" role="tab">Day 4: <strong>Password Generator</strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day6" role="tab">Day 5: <strong>Reeborg's world</strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day7" role="tab">Day 6 & 7: <strong>Website Updates</strong></a>
             </div>
         </div>
         <div class="col-md-6">
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active" id="day1" role="tabpanel">
-                    <div class="container my-cont d-md-flex flex-column justify-content-center align-content-center">
+                <div class="tab-pane active" id="bill-calculator" role="tabpanel">
+                    <div class="container my-cont d-md-flex flex-column  mt-3 align-content-center">
                         <h1 class="display-5 py-3">Bill Calculator</h1>
                         <p class="lead">This is a simple script to calculate the individual amount required from each person at dinner.</p>
                         <div class="container" id="tc-content">
@@ -29,12 +32,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="day1-2" role="tabpanel">
-                    <div class="container my-cont d-md-flex flex-column justify-content-center align-content-center">
+                <div class="tab-pane" id="band-name" role="tabpanel">
+                    <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
                         <h1 class="display-5 py-3">Band Name Generator</h1>
                         <p class="lead">Get a band name lol!</p>
                         <div class="container" id="band-content">
-                            <div class="input-group mb-3" id="band-section">
+                            <div class="input-group mb-3 border-none" id="band-section">
                                 <span for="band-input" id="band-input-label" class="input-group-text"></span>
                                 <input type="text" class="form-control" id="band-input" placeholder="">
                             </div>
@@ -42,7 +45,64 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="day3" role="tabpanel">Content for Day 3</div>
+                <div class="tab-pane" id="story" role="tabpanel"> 
+                    <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
+                        <h1 class="display-5 py-3">Chose Your own adventure</h1>
+                        <p class="lead fw-semibold" id="story-text">Follow Along with the story</p>
+                        <div class="row w-100">
+                            <div class="col-md-5">
+                                <button class=" btn btn-primary w-100" id="story-left">Left</button>
+                            </div>
+                            <div class="col-md-2 p-2">
+
+                            </div>
+                            <div class="col-md-5 ">
+                                <button class="btn btn-primary w-100" id="story-right">Right</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="rock-paper-scissors" role="tabpanel">
+                    <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
+                        <h1 class="display-5 py-3">Rock Paper Scissors</h1>
+                        <p class="lead" id="rps-text"></p>
+                        <div class="row ">
+                            <div class="col-md-4">
+                                <button class="btn btn-primary w-100" id="btn-rock"><i class="fas far fa-hand-rock"></i> Rock</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary w-100" id="btn-paper"><i class="fas far fa-hand-paper"></i> Paper</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary w-100" id="btn-scissors"><i class="fas far fa-hand-scissors"></i> Scissors</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="password-generator" role="tabpanel">
+                    <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
+                        <h1 class="display-5 py-3">Password Generator</h1>
+                        <p class="lead" id="pass-text"></p>
+                        <input type="number" class="form-control mb-3" id="pass-req" placeholder="How many letters?">
+                        <button class="btn btn-primary" id="pass-submit">Next</button>
+                    </div>
+                </div>
+                <div class="tab-pane" id="day6" role="tabpanel">
+                    <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
+                        <h1 class="display-5 py-3">Learning with Reeborg's World</h1>
+                        <p class="lead">
+                            On Day 5, I explored <a href="http://reeborg.ca/" target="_blank">Reeborg's World</a> to dive deeper into conditionals and use them to build algorithms. This interactive tool allowed me to apply my understanding of conditionals by solving puzzles and programming the robot to complete tasks. It was a hands-on way to sharpen my logic and problem-solving skills through real-world scenarios.
+                        </p>
+                    </div>
+                </div>
+                <div class="tab-pane" id="day7" role="tabpanel">
+                    <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
+                        <h1 class="display-5 py-3">Day 6 & 7: Assembly </h1>
+                        <p class="lead">
+                            On Days 6 and 7, I decided to have my progress on my website so i restructured days 1-5 to work on my website. I took some of the algorithms I had learned and ported them over to JavaScript. To make things smoother, I used jQuery and AJAX to run those algorithms without needing to reload the page. It was a great way to keep things interactive and fast—plus, no page refreshes!
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-3">

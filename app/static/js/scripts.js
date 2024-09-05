@@ -5,7 +5,7 @@ $(window).scroll(function() {
 });
 
 function toggleNavbar() {
-    if ($(this).scrollTop() > 50) {
+    if ($(this).scrollTop() > 10) {
         $('.navbar').addClass('shadow shadow-sm bg-primary');
         $('.navbar-brand').addClass('text-white');
         $('.nav-link').addClass('text-white');
