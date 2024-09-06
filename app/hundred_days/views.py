@@ -1,11 +1,23 @@
 from flask import render_template, Blueprint, jsonify, request
+from app.hundred_days.hangman_words import word_list
+from app.hundred_days.hangman_art import stages,logo
 import random
 
 hundred_days = Blueprint('hundred_days',__name__)
 
-@hundred_days.route('/100-days-of-code')
+@hundred_days.route('/100-days-week-one')
 def week_one():
     return render_template('hundred_days/week1.html')
+
+@hundred_days.route('/100-days-week-two')
+def week_two():
+    return render_template('hundred_days/week2.html')
+
+@hundred_days.route('/load-hangman',methods=['GET'])
+def load_hangman():
+    chosen_word = random.choice(word_list)
+    return jsonify({'logo':logo,'stages':stages,'chosen_word':chosen_word})
+
 
 @hundred_days.route('/calculate-bill',methods=['POST'])
 def calculate_bill():

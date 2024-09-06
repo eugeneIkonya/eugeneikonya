@@ -6,20 +6,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="list-group pt-2" id="myList" role="tablist">
-                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#bill-calculator" role="tab">Day 1 : <strong>Bill Calculator</strong></a>
+            <nav aria-label="week-navigation" class="mt-4">
+                <ul class="pagination">
+                    <li class="page-item" ><a href="{{ url_for('hundred_days.week_two') }}" class="page-link">2</a></li>
+                    <li class="page-item active" aria-current="page" ><a href="{{ url_for('hundred_days.week_one') }}" class="page-link"> Week 1</a></li>
+                </ul>
+            </nav>
+            <div class="list-group pt-2 d-flex flex-column-reverse" id="myList" role="tablist">
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#bill-calculator" role="tab">Day 1 : <strong>Bill Calculator</strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#band-name" role="tab">Day 1: <strong>Band Name Generator</strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#story" role="tab">Day 2: <strong>Choose your Own Story</strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#rock-paper-scissors" role="tab">Day 3: <strong>Rock Paper Scissors</strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#password-generator" role="tab">Day 4: <strong>Password Generator</strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day6" role="tab">Day 5: <strong>Reeborg's world</strong></a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day7" role="tab">Day 6 & 7: <strong>Website Updates</strong></a>
+                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#day7" role="tab">Day 6 & 7: <strong>Website Updates</strong></a>
             </div>
         </div>
         <div class="col-md-6">
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active" id="bill-calculator" role="tabpanel">
+                <div class="tab-pane" id="bill-calculator" role="tabpanel">
                     <div class="container my-cont d-md-flex flex-column  mt-3 align-content-center">
                         <h1 class="display-5 py-3">Bill Calculator</h1>
                         <p class="lead">This is a simple script to calculate the individual amount required from each person at dinner.</p>
@@ -67,13 +73,13 @@
                         <h1 class="display-5 py-3">Rock Paper Scissors</h1>
                         <p class="lead" id="rps-text"></p>
                         <div class="row ">
-                            <div class="col-md-4">
+                            <div class="col-md-4 p-1">
                                 <button class="btn btn-primary w-100" id="btn-rock"><i class="fas far fa-hand-rock"></i> Rock</button>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 p-1">
                                 <button class="btn btn-primary w-100" id="btn-paper"><i class="fas far fa-hand-paper"></i> Paper</button>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 p-1">
                                 <button class="btn btn-primary w-100" id="btn-scissors"><i class="fas far fa-hand-scissors"></i> Scissors</button>
                             </div>
                         </div>
@@ -84,7 +90,7 @@
                         <h1 class="display-5 py-3">Password Generator</h1>
                         <p class="lead" id="pass-text"></p>
                         <input type="number" class="form-control mb-3" id="pass-req" placeholder="How many letters?">
-                        <button class="btn btn-primary" id="pass-submit">Next</button>
+                        <button class="btn btn-primary w-100" id="pass-submit">Next</button>
                     </div>
                 </div>
                 <div class="tab-pane" id="day6" role="tabpanel">
@@ -95,7 +101,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="tab-pane" id="day7" role="tabpanel">
+                <div class="tab-pane active" id="day7" role="tabpanel">
                     <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
                         <h1 class="display-5 py-3">Day 6 & 7: Assembly </h1>
                         <p class="lead">
