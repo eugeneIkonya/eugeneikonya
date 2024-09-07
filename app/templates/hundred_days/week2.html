@@ -12,20 +12,20 @@
                     <li class="page-item" ><a href="{{ url_for('hundred_days.week_one') }}" class="page-link">1</a></li>
                 </ul>
             </nav>
-            <div class="list-group pt-2" id="myList" role="tablist">
-                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#day-1" role="tab">Day  8: <strong> HangMan</strong></a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-2" role="tab">Day 9: <strong><i class="fas fa-lock"></i> </strong></a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-3" role="tab">Day 10: <strong><i class="fas fa-lock"></i></strong></a>
+            <div class="list-group pt-2 d-flex flex-column-reverse" id="myList" role="tablist">
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-1" role="tab">Day  8: <strong> HangMan</strong></a>
+                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#day-2" role="tab">Day 9: <strong>Ceaser Cipher</strong></a>
+                <!-- <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-3" role="tab">Day 10: <strong><i class="fas fa-lock"></i></strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-4" role="tab">Day 11: <strong> <i class="fas fa-lock"></i></strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-5" role="tab">Day 12: <strong> <i class="fas fa-lock"></i></strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-6" role="tab">Day 13: <strong><i class="fas fa-lock"></i> </strong></a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-7" role="tab">Day 14: <strong> <i class="fas fa-lock"></i></strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-7" role="tab">Day 14: <strong> <i class="fas fa-lock"></i></strong></a> -->
             </div>
         </div>
         <div class="col-md-6">
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active" id="day-1" role="tabpanel">
+                <div class="tab-pane" id="day-1" role="tabpanel">
                     <div class="container my-cont d-md-flex flex-column  mt-3 align-content-center">
                         <h1 class="display-5 py-3">HangMan</h1>
                         <p class="lead" id="hangman-text">Guess the correct word before you run out of lives</p>
@@ -37,10 +37,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="day-2" role="tabpanel">
+                <div class="tab-pane active" id="day-2" role="tabpanel">
                     <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
-                        <h1 class="display-5 py-3"></h1>
-                        <p class="lead"></p>
+                        <h1 class="display-5 py-3">Ceaser Cipher</h1>
+                        <p class="lead" id="ceaser-text">A program to encrypt and decrypt a ceaser cipher. A shift cipher used by Julius Cipher and his generals to hide his messages.</p>
+                        <div class="row">
+                            <div class="col-md-5"id="ceaser-section" ><button class="btn btn-primary w-100" id="btn-1">Encrypt</button></div>
+                            <div class="col-md-2 p-2"></div>
+                            <div class="col-md-5"><button class="btn btn-primary w-100" id="btn-2">Decrypt</button></div>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="day-3" role="tabpanel"> 

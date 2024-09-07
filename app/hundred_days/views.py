@@ -13,6 +13,29 @@ def week_one():
 def week_two():
     return render_template('hundred_days/week2.html')
 
+@hundred_days.route('/ceaser-cipher',methods=['POST'])
+def ceaser_cipher():
+    data = request.get_json()
+    function = data['selection']
+    text =  data['text'].lower()
+    shift = int(data['shift'])
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+    output = ''
+    
+    print(shift)
+
+    for letter in text:
+        if function == "Decrypt":
+            shift *= -1
+        
+        position = alphabet.index(letter) + shift
+        position %= len(alphabet)
+        output += alphabet[position]
+
+    return jsonify({"output":output})
+
+
 @hundred_days.route('/load-hangman',methods=['GET'])
 def load_hangman():
     chosen_word = random.choice(word_list)
