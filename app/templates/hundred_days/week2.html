@@ -14,9 +14,9 @@
             </nav>
             <div class="list-group pt-2 d-flex flex-column-reverse" id="myList" role="tablist">
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-1" role="tab">Day  8: <strong> HangMan</strong></a>
-                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#day-2" role="tab">Day 9: <strong>Ceaser Cipher</strong></a>
-                <!-- <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-3" role="tab">Day 10: <strong><i class="fas fa-lock"></i></strong></a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-4" role="tab">Day 11: <strong> <i class="fas fa-lock"></i></strong></a>
+                <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-2" role="tab">Day 9: <strong>Ceaser Cipher</strong></a>
+                <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#day-3" role="tab">Day 10: <strong>Silent Auction</strong></a>
+                <!-- <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-4" role="tab">Day 11: <strong> <i class="fas fa-lock"></i></strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-5" role="tab">Day 12: <strong> <i class="fas fa-lock"></i></strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-6" role="tab">Day 13: <strong><i class="fas fa-lock"></i> </strong></a>
                 <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#day-7" role="tab">Day 14: <strong> <i class="fas fa-lock"></i></strong></a> -->
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane active" id="day-2" role="tabpanel">
+                <div class="tab-pane" id="day-2" role="tabpanel">
                     <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
                         <h1 class="display-5 py-3">Ceaser Cipher</h1>
                         <p class="lead" id="ceaser-text">A program to encrypt and decrypt a ceaser cipher. A shift cipher used by Julius Cipher and his generals to hide his messages.</p>
@@ -48,11 +48,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="day-3" role="tabpanel"> 
+                <div class="tab-pane active" id="day-3" role="tabpanel"> 
                     <div class="container my-cont d-md-flex flex-column mt-3 align-content-center">
-                        <h1 class="display-5 py-3"></h1>
-                        <p class="lead"></p>
-
+                        <h1 class="display-5 py-3">Silent Auction</h1>
+                        <p class="lead" id="auction-text">A simple algorithm for a silent auction. This is the type of auction where one bidder doesn't know what the other is bidding and the winner is revealed at the end</p>
+                        <div class="row" id="auction-content">
+                            <input type="text" class="form-control" id="auction-input" placeholder="What is Your name?">
+                            <button class="btn btn-primary mt-1" id="auction-submit">Next</button>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="day-4" role="tabpanel">

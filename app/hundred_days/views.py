@@ -13,6 +13,38 @@ def week_one():
 def week_two():
     return render_template('hundred_days/week2.html')
 
+@hundred_days.route('/silent-auction', methods=['POST'])
+def silent_auction():
+    names = [
+    'James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer',
+    'Michael', 'Linda', 'William', 'Elizabeth', 'David', 'Barbara',
+    'Joseph', 'Susan', 'Charles', 'Jessica', 'Thomas', 'Sarah',
+    'Daniel', 'Karen'
+    ]
+    bids = {}
+    data = request.get_json()
+
+    name = data['name']
+    bid = int(data['bid'])
+
+    for i in range(5):
+        bids[random.choice(names)] = random.randint(0,1000)
+
+    bids[name] = bid
+
+    winner = ''
+    largest = 0
+
+    for key in bids:
+        if largest < bids[key]:
+            winner = key
+
+    text = f"{winner} won the Auction by bidding {bids[winner]} $"
+
+    return jsonify({'text':text})
+
+
+
 @hundred_days.route('/ceaser-cipher',methods=['POST'])
 def ceaser_cipher():
     data = request.get_json()
@@ -23,12 +55,10 @@ def ceaser_cipher():
 
     output = ''
     
-    print(shift)
+    if function == "Decrypt":
+            shift *= -1
 
     for letter in text:
-        if function == "Decrypt":
-            shift *= -1
-        
         position = alphabet.index(letter) + shift
         position %= len(alphabet)
         output += alphabet[position]

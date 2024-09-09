@@ -439,11 +439,55 @@ $(document).ready(()=>{
                 ),
                 contentType: "application/json",
                 success: function (response) {
-                    ceaser_text.text('The Output is :' + response.output)
+                   ceaser_text.text('The Output is :' + response.output)
+                   ceaser_section.empty()
+                   button_two.addClass('d-none')
                 }
             });
         }
     })
 
 
+})
+
+//silent auction
+$(document).ready(()=>{
+    let auction_section = $('#auction-content')
+    let auction_input= $('#auction-input')
+    let auction_btn = $('#auction-submit')
+    let btn_status = 'name'
+    let name = ''
+    let bid = 0
+
+    auction_btn.on('click',()=>{
+        if(btn_status == 'name'){
+            if (auction_input.val() == '' ){
+                alert('Enter a real name!')
+                return
+            }
+            name = auction_input.val()
+            auction_input.attr('type','number')
+            auction_input.attr('placeholder','How much do you want to bid?')
+            btn_status = 'people'
+        }else if(btn_status == 'people'){
+            if(isNaN(auction_input.val())){
+                alert('Enter number of people')
+                return
+            }
+            bid = auction_input.val()
+            $.ajax({
+                'type' : 'POST',
+                'url' : '/silent-auction',
+                'data' : JSON.stringify({
+                    name: name,
+                    bid : bid
+                }),
+                contentType : 'application/json',
+                success: (response) =>{
+                    auction_section.empty()
+                    $('#auction-text').text(response.text)
+                }
+            })
+        }
+    })
 })
