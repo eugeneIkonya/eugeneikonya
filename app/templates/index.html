@@ -52,7 +52,7 @@
     <h1 class="display-1 py-3">Games</h1>
     <div class="overflow-auto" style="white-space: nowrap; width: 100%;">
         <div class="d-flex justify-content-sm-center px-5">
-            <a href="#" class="btn text-white">
+            <a href="{{ url_for('game.hangman') }}" class="btn text-white">
                 <div class="ms-1 game-card mx-2 text-center">
                     <img src="{{ url_for('static', filename='images/games/hangman.png') }}" alt="Hangman" class="game-icon">
                     <h5 class="mt-2">Hangman</h5>

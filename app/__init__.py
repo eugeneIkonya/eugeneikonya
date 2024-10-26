@@ -40,5 +40,8 @@ app.register_blueprint(hundred_days)
 from app.admin.views import admin
 app.register_blueprint(admin)
 
+from app.game.views import game
+app.register_blueprint(game)
+
 
 from app.utils.comands import create_admin

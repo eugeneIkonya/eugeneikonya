@@ -57,6 +57,10 @@ overflow-auto {
   background: transparent;
 }
 
+.pt-6 {
+  padding-top: 5rem;
+}
+
 /*!
  * Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)

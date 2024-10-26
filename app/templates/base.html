@@ -52,10 +52,9 @@
     </div>
 </div>
 </body>
-{% block scripts %}{% endblock %}
 <!-- <script src="{{url_for('static',filename='js/darkmodetoggle.js')}}"></script> -->
 <script src="{{ url_for('static', filename='js/jquery3.7.1.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-<script src="{{ url_for('static', filename='js/hundred_days.js') }}"></script>
+{% block scripts %}{% endblock %}
 </html>
