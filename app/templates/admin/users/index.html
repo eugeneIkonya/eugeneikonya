@@ -1,0 +1,30 @@
+{% extends 'admin-base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+    <div class="container mt-1 w-75">
+        <table class="table table-striped-columns">
+            <tr class="table-primary">
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Admin</th>
+                <th>Verified</th>
+                <th>Edit</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.is_admin }}</td>
+                <td>{{ user.is_verified }}</td>
+                <td><a href="" class="btn btn-primary">Edit</a></td>
+                </tr>
+            {%  endfor %}
+        </table>
+    </div>
+{% endblock %}

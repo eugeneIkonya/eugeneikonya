@@ -7,9 +7,9 @@
     <title>by EugeneIkonya - {% block title %}{% endblock %}</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md text-bg-primary">
+    <nav class="navbar navbar-expand-md text-bg-primary fixed-top">
         <div class="container">
-            <a href="{{ url_for('core.index' ) }}" class="navbar-brand text-white"><span class="fs-6">by </span>Eugene Ikonya</a>
+            <a href="{{ url_for('core.index' ) }}" class="navbar-brand text-white"><span><i class="fas fa-crown fs-3"></i></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon "></span>
               </button>
@@ -20,7 +20,9 @@
               </div>
         </div>
     </nav>
-    {% block content %} {% endblock %}
+    <div class="min-vh-100">
+      {% block content %} {% endblock %}
+    </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     <div class="container mt-3">
@@ -33,11 +35,27 @@
     </div>
   {% endif %}
 {% endwith %}
-</body>
+<div class="text-bg-primary">
+    <div class="row w-100">
+        <div class="col-md-4">
 
+        </div>
+        <div class="col-md-4">
+          
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+    <div class="container  text-center">
+        by Eugene Ikonya
+    </div>
+</div>
+</body>
+{% block scripts %}{% endblock %}
 <!-- <script src="{{url_for('static',filename='js/darkmodetoggle.js')}}"></script> -->
 <script src="{{ url_for('static', filename='js/jquery3.7.1.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 <script src="{{ url_for('static', filename='js/hundred_days.js') }}"></script>
 </html>

@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import os
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
@@ -37,6 +36,9 @@ app.register_blueprint(auth)
 
 from app.hundred_days.views import hundred_days
 app.register_blueprint(hundred_days)
+
+from app.admin.views import admin
+app.register_blueprint(admin)
 
 
 from app.utils.comands import create_admin

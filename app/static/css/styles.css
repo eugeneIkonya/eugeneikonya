@@ -13,6 +13,50 @@
     min-height: 0 !important; /* Override for small screens */
   }
 }
+.min-vh-90 {
+  min-height: 90vh;
+}
+
+#games {
+  position: relative;
+  overflow: hidden;
+}
+
+overflow-auto {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 1rem 0; /* Add vertical padding */
+  display: flex; /* Flexbox to align items in a row */
+}
+
+.game-card {
+  width: 150px; /* Fixed width for each game card */
+  flex: 0 0 auto; /* Prevent flex items from growing/shrinking */
+}
+
+.game-icon {
+  width: 100px; /* Icon size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Optional: Add styles for the scrollable container */
+.overflow-auto {
+  scrollbar-width: thin; /* For Firefox */
+}
+
+/* For WebKit browsers */
+.overflow-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /*!
  * Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -14894,8 +14938,8 @@ textarea.form-control-lg {
   --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
   --bs-accordion-border-color: var(--bs-border-color);
   --bs-accordion-border-width: var(--bs-border-width);
-  --bs-accordion-border-radius: var(--bs-border-radius);
-  --bs-accordion-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+  --bs-accordion-border-radius: 0px;
+  --bs-accordion-inner-border-radius: calc(0px - (var(--bs-border-width)));
   --bs-accordion-btn-padding-x: 1.25rem;
   --bs-accordion-btn-padding-y: 1rem;
   --bs-accordion-btn-color: var(--bs-body-color);

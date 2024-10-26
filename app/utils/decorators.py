@@ -7,7 +7,7 @@ from flask_login import current_user
 def account_verified(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
-        if current_user.is_verified == False:
+        if not current_user.is_verified:
           flash('Account not verified!')
           return redirect(url_for('auth.inactive'))
         return func(*args, **kwargs)
