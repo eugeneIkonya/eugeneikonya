@@ -29,7 +29,20 @@ $(document).ready(() => {
         btn.addClass('d-none')
         main_section.append('<pre class="text-center" id="hangman-stage">' + stages[lives] + '</pre>')
         main_section.append('<p class="text-center fw-bold fs-4" id="hangman-guess">Word to Guess: ' + placeholder + '</p>')
-        main_section.append('<input class="form-control m-auto w-50" id="hangman-input" type="text">')
+        let keyboard = $('<div class="text-center my-3" id="hangman-keyboard"></div>');
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+        // Create a badge for each letter
+        for (let letter of alphabet) {
+            let letterBadge = $(`<span class="badge bg-primary m-1 p-3" style="cursor: pointer;">${letter}</span>`);
+            letterBadge.on('click', function () {
+                handleGuess(letter); // Call guess handling function
+                $(this).off('click').addClass('disabled'); // Disable the badge after selection
+            });
+            keyboard.append(letterBadge);
+        }
+
+    main_section.append(keyboard);
         lives_section.append('<p class="lead" id="hangman-lives">Lives: 6/6</p>')
 
 
@@ -41,50 +54,55 @@ $(document).ready(() => {
 
 
 
-    $(document).on('input', '#hangman-input', function () {
-        if (!gameover) {
-            main_text.text('')
-            guess = $(this).val().toLowerCase();
-            $(this).val('');
+function handleGuess(guess) {
+    if (!gameover) {
+        main_text.text('');
+        let updated_display = '';
+        let correct_guess = false;
 
-            let updated_display = '';
-            let correct_guess = false;
-
-            for (let i = 0; i < word.length; i++) {
-                let letter = word[i];
-                if (letter === guess) {
-                    updated_display += letter + ' ';
-                    correct_guess = true;
-                } else if (correct_letters.includes(letter)) {
-                    updated_display += letter + ' ';
-                } else {
-                    updated_display += '_ ';
-                }
-            }
-
-
-            $('#hangman-guess').text('Word to Guess: ' + updated_display.trim());
-
-
-            if (!correct_guess) {
-                lives -= 1;
-                main_text.append(guess + " is not in the word. ");
-                $('#hangman-lives').text(`Lives: ${lives}/6`);
-                $('#hangman-feedback').append(`<span class="badge bg-danger m-1">${guess}</span>`);
-                if (lives === 0) {
-                    gameover = true;
-                    main_text.append('You lost! The correct word was ' + word);
-                }
+        for (let i = 0; i < word.length; i++) {
+            let letter = word[i];
+            if (letter === guess) {
+                updated_display += letter + ' ';
+                correct_guess = true;
+            } else if (correct_letters.includes(letter)) {
+                updated_display += letter + ' ';
             } else {
-                correct_letters.push(guess);
-                main_text.append(guess + ' Is in the word')
-                if (!updated_display.includes('_')) {
-                    gameover = true;
-                    main_text.append('Congratulations! You won!');
-                }
+                updated_display += '_ ';
             }
-            $('#hangman-stage').html('<pre>' + stages[lives] + '</pre>');
         }
-    });
+
+        $('#hangman-guess').text('Word to Guess: ' + updated_display.trim());
+
+        if (!correct_guess) {
+            lives -= 1;
+            main_text.append(guess + " is not in the word. ");
+            $('#hangman-lives').text(`Lives: ${lives}/6`);
+            incorrect_letters.push(guess);
+
+            // Update the guessed letter badge to `text-bg-secondary`
+            $(`#hangman-keyboard span:contains(${guess})`).removeClass('bg-primary').addClass('text-bg-danger');
+
+            if (lives === 0) {
+                gameover = true;
+                main_text.append('You lost! The correct word was ' + word);
+            }
+        } else {
+            correct_letters.push(guess);
+            main_text.append(guess + ' is in the word');
+
+            // Update the guessed letter badge to `text-bg-secondary`
+            $(`#hangman-keyboard span:contains(${guess})`).removeClass('bg-primary').addClass('text-bg-success');
+
+            if (!updated_display.includes('_')) {
+                gameover = true;
+                main_text.append('Congratulations! You won!');
+            }
+        }
+
+        $('#hangman-stage').html('<pre>' + stages[lives] + '</pre>');
+    }
+}
+
 
 })
