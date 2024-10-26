@@ -96,6 +96,7 @@ function handleGuess(guess) {
 
             if (!updated_display.includes('_')) {
                 gameover = true;
+                main_text.empty()
                 main_text.append('Congratulations! You won!');
             }
         }

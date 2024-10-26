@@ -3,7 +3,7 @@
     Home
 {% endblock %}
 {% block content %}
-<div class="min-vh-100 border-5 d-flex justify-content-center flex-column align-items-center text-bg-primary">
+<div class="min-vh-90 border-5 d-flex justify-content-center flex-column align-items-center text-bg-primary">
     <div id="title"></div>
     <div id="stuff"></div>
 </div>
@@ -53,7 +53,7 @@
     <div class="overflow-auto" style="white-space: nowrap; width: 100%;">
         <div class="d-flex justify-content-sm-center px-5">
             <a href="{{ url_for('game.hangman') }}" class="btn text-white">
-                <div class="ms-1 game-card mx-2 text-center">
+                <div class="game-card me-1 text-center">
                     <img src="{{ url_for('static', filename='images/games/hangman.png') }}" alt="Hangman" class="game-icon">
                     <h5 class="mt-2">Hangman</h5>
                 </div>
