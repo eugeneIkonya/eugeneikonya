@@ -3,5 +3,22 @@
     Rock Paper Scissors
 {% endblock %}
 {% block content %}
-
+<div class="container text-center min-vh-100 justify-content-center d-flex flex-column mt-3 align-content-center">
+    <h1 class="display-5 py-3">Rock Paper Scissors</h1>
+    <p class="lead" id="rps-text"></p>
+    <div class="row ">
+        <div class="col-md-4 p-1">
+            <button class="btn btn-primary w-100" id="btn-rock"><i class="fas far fa-hand-rock"></i> Rock</button>
+        </div>
+        <div class="col-md-4 p-1">
+            <button class="btn btn-primary w-100" id="btn-paper"><i class="fas far fa-hand-paper"></i> Paper</button>
+        </div>
+        <div class="col-md-4 p-1">
+            <button class="btn btn-primary w-100" id="btn-scissors"><i class="fas far fa-hand-scissors"></i> Scissors</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static' , filename='js/game/rps.js') }}"></script>
 {% endblock %}

@@ -58,13 +58,13 @@
                     <h5 class="mt-2">Hangman</h5>
                 </div>
             </a>
-            <a href="#" class="btn text-white">
+            <a href="{{ url_for('game.rps') }}" class="btn text-white">
                 <div class="game-card mx-2 text-center">
                     <img src="{{ url_for('static', filename='images/games/rock-paper.png') }}" alt="rock-paper" class="game-icon">
                     <h5 class="mt-2">Rock </br>Paper</br>Scissors</h5>
                 </div>
             </a>
-            <a href="#" class="btn text-white">
+            <a href="{{ url_for('game.interactive_story') }}" class="btn text-white">
                 <div class="game-card mx-2 text-center">
                     <img src="{{ url_for('static', filename='images/games/chosen.png') }}" alt="chose" class="game-icon">
                     <h5 class="mt-2">Interactive </br>story</h5>

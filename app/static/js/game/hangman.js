@@ -85,7 +85,8 @@ function handleGuess(guess) {
 
             if (lives === 0) {
                 gameover = true;
-                main_text.append('You lost! The correct word was ' + word);
+                main_text.empty()
+                main_text.append(`You lost! The correct word was  <span class="fw-bold">${word}</span>`);
             }
         } else {
             correct_letters.push(guess);

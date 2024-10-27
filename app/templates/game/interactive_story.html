@@ -3,5 +3,22 @@
     Interactive Story
 {% endblock %}
 {% block content %}
+<div class="container justify-content-center min-vh-100 d-flex flex-column mt-3 align-content-center">
+    <h1 class="display-5 py-3">Chose Your own adventure</h1>
+    <p class="lead fw-semibold" id="story-text">Follow Along with the story</p>
+    <div class="row w-100">
+        <div class="col-md-5">
+            <button class=" btn btn-primary w-100" id="story-left">Left</button>
+        </div>
+        <div class="col-md-2 p-2">
 
+        </div>
+        <div class="col-md-5 ">
+            <button class="btn btn-primary w-100" id="story-right">Right</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{%  block scripts %}
+    <script src="{{ url_for('static', filename='js/game/interactive-story.js') }}"></script>
 {% endblock %}
