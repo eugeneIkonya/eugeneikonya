@@ -44,3 +44,21 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User {self.email}"
+
+class Feedback(db.Model):
+    __tablename__ = 'feedback'
+
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.String(), nullable=False)
+    name = db.Column(db.String(20), nullable = True)
+    email = db.Column(db.String(60), nullable = True)
+    created_at = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
+
+    def __init__(self, name, email, message):
+        self.name = name
+        self.email = email
+        self.message = message
+        self.created_at = datetime.now()
+
+    def __repr(self):
+        return f"{self.name} Said {self.Message}"
