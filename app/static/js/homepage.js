@@ -44,6 +44,7 @@ feedback_btn.on('click',()=>{
         }
     }else if(step === 1){
         const name = feedback_input.val()
+        feedback_btn.attr('class','d-none')
         $.ajax({
         type: "POST",
         url: "/send-feedback/",
@@ -56,7 +57,6 @@ feedback_btn.on('click',()=>{
         contentType: "application/json",
         success: function (response) {
             $('#all-input').attr('class', 'd-none')
-            feedback_btn.attr('class','d-none')
             $('#feedback-text').empty()
             $('#feedback-text').html(response.message)
         }
