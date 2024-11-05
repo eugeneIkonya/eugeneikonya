@@ -1,4 +1,5 @@
 import os
+from datetime import  timedelta
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -22,6 +23,9 @@ class Config(object):
     MAIL_USE_SSL = False
 
     SECURITY_PASSWORD_SALT = 'my_precious_two'
+
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=20)
+
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True

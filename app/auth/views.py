@@ -25,7 +25,7 @@ def login():
 
             next = request.args.get('next')
 
-            if next is None or not isinstance(next, str) or not next.startswith('/'):
+            if next is None or not isinstance(next, str):
                 next = url_for('core.index')
 
             return redirect(next)

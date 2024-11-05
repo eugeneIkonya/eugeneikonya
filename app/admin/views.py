@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request
 from app import db
-from app.models import User, Feedback
+from app.models import User, Feedback, VisitSession
 from app.utils.decorators import admin_required
 
 admin = Blueprint('admin', __name__,url_prefix='/admin')
@@ -8,7 +8,8 @@ admin = Blueprint('admin', __name__,url_prefix='/admin')
 @admin.route('/')
 @admin_required
 def index():
-    return render_template('admin/dashboard.html')
+    all_sessions = db.session.query(VisitSession).all()
+    return render_template('admin/dashboard.html',all_sessions = all_sessions)
 
 
 @admin.route('/users')

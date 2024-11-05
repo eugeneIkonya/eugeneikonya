@@ -62,3 +62,22 @@ class Feedback(db.Model):
 
     def __repr(self):
         return f"{self.name} Said {self.Message}"
+
+class VisitSession(db.Model):
+
+    __tablename__ = 'visit_sessions'
+
+    id = db.Column(db.Integer, primary_key = True)
+    ip = db.Column(db.String(45))
+    pages = db.Column(db.Text)
+    created_at = db.Column(db.DateTime)
+    updated_at = db.Column(db.DateTime)
+
+    def __init__(self, ip, pages):
+        self.ip = ip
+        self.pages = pages
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
+    def __repr__(self):
+        return f'user{self.ip} visited {self.pages}'

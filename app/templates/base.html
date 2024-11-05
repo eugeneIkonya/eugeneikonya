@@ -7,7 +7,7 @@
     <title>by EugeneIkonya - {% block title %}{% endblock %}</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md text-bg-primary fixed-top">
+    <nav class="navbar navbar-expand-md text-bg-primary sticky-top">
         <div class="container">
             <a href="{{ url_for('core.index' ) }}" class="navbar-brand text-white"><span><i class="fas fa-crown fs-3"></i></span></a>
             <button class="navbar-toggler text-bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -52,7 +52,6 @@
     </div>
 </div>
 </body>
-<!-- <script src="{{url_for('static',filename='js/darkmodetoggle.js')}}"></script> -->
 <script src="{{ url_for('static', filename='js/jquery3.7.1.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='js/scripts.js') }}"></script>

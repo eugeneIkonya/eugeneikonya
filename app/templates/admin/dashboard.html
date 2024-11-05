@@ -3,16 +3,11 @@
 {% block content %}
 <div class="container w-50 m-auto">
     <h1 class="text-center">Dashboard</h1>
-    <p class="lead">
-        {% if current_user.is_authenticated %}
-            Welcome {{ current_user.username}}
-            {% if current_user.is_admin %}
-                You are an admin
-            {% endif %}
-        {% else %}
-            Eugene Say's Hello
-
-        {% endif %}
-    </p>
+    <ul>
+    {% for visit in all_sessions %}
+        <li><strong>IP :</strong>{{ visit.ip }}</li>
+        <li><strong>Pages: </strong> {{ visit.pages }}</li>
+    {% endfor %}
+    </ul>
 </div>
 {% endblock %}
